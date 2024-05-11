@@ -1,47 +1,44 @@
-class TodoList:
-    def _init_(self):
-        self.tasks = []
+def add(x, y):
+    return x + y
 
-    def add_task(self, task):
-        self.tasks.append(task)
+def subtract(x, y):
+    return x - y
 
-    def remove_task(self, index):
-        if 0 <= index < len(self.tasks):
-            del self.tasks[index]
-        else:
-            print("Invalid task index")
+def multiply(x, y):
+    return x * y
 
-    def display_tasks(self):
-        if self.tasks:
-            print("Tasks:")
-            for i, task in enumerate(self.tasks):
-                print(f"{i + 1}. {task}")
-        else:
-            print("No tasks")
+def divide(x, y):
+    if y == 0:
+        return "Cannot divide by zero"
+    return x / y
 
 def main():
-    todo_list = TodoList()
-
     while True:
-        print("\nTo-Do List Menu:")
-        print("1. Add Task")
-        print("2. Remove Task")
-        print("3. Display Tasks")
-        print("4. Exit")
-        choice = input("Enter your choice: ")
+        print("\nSimple Calculator Menu:")
+        print("1. Addition")
+        print("2. Subtraction")
+        print("3. Multiplication")
+        print("4. Division")
+        print("5. Exit")
+        choice = input("Enter your choice (1/2/3/4/5): ")
 
-        if choice == '1':
-            task = input("Enter task: ")
-            todo_list.add_task(task)
-            print("Task added successfully.")
-        elif choice == '2':
-            index = int(input("Enter task index to remove: ")) - 1
-            todo_list.remove_task(index)
-            print("Task removed successfully.")
-        elif choice == '3':
-            todo_list.display_tasks()
-        elif choice == '4':
-            print("Thank you for using the To-Do List. Goodbye!")
+        if choice in ('1', '2', '3', '4'):
+            num1 = float(input("Enter first number: "))
+            num2 = float(input("Enter second number: "))
+            if choice == '1':
+                result = add(num1, num2)
+                print("Result:", result)
+            elif choice == '2':
+                result = subtract(num1, num2)
+                print("Result:", result)
+            elif choice == '3':
+                result = multiply(num1, num2)
+                print("Result:", result)
+            elif choice == '4':
+                result = divide(num1, num2)
+                print("Result:", result)
+        elif choice == '5':
+            print("Thank you for using the calculator. Goodbye!")
             break
         else:
             print("Invalid choice. Please enter a valid option.")
